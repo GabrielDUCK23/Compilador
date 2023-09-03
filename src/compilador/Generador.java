@@ -16,7 +16,7 @@ public class Generador {
     public static void main(String[] args) throws IOException, Exception {
 //        String pathFlex="C:\\Users\\7053\\Documents\\NetBeansProjects\\UEDL_COMPILADORES\\src\\sintactico\\java_lexico_sintactico.jflex";
 
-        String pathFlex="src\\Compilador\\PRUEBA.flex";
+        String pathFlex="src\\compilador\\Typescript.flex";
         File file=new File(pathFlex);
         jflex.Main.generate(file);
         String[] parametrosLex = {pathFlex};
