@@ -1,0 +1,22 @@
+package compilador;
+
+import java_cup.runtime.*;
+
+parser code {:
+    // Connect this parser to a scanner!
+    scanner s;
+    Parser(scanner s){ this.s=s; }
+:}
+
+/* define how to connect to the scanner! */
+init with {: s.init(); :};
+scan with {: return s.next_token(); :};
+
+/* Terminals (tokens returned by the scanner). */
+terminal INT, SUMA, COMILLA, MASIGUAL, MENOSIGUAL, PORIGUAL, DIVISIONIGUAL, PORCENTAJEIGUAL, INCREMENTO, DECREMENTO,COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ,PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF,NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH,CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS,FALSE, FINALLY, FOR, FUCTION, AS, IMPLEMENTS, INTERFACE, LET, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE,REQUIERE,IDENTIFIER,INTEGER_LITERAL,STRING_LITERAL,NUMBER,SET, STRING, SYMBOL, TYPE, FROM, OF,WITH,DECLARE, ERROR;
+
+/* Non terminals */
+non terminal    expr;      // used to store evaluated subexpressions
+
+expr::= ERROR;
+
