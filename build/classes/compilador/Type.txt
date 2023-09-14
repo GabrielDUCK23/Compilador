@@ -1,5 +1,0 @@
-function saludo(mensaje) {
-    return "Hola Mundo, " + mensaje;
-}
-var usuario = "Nube Colectiva";
-document.body.textContent = saludo(usuario);

@@ -10,6 +10,8 @@ package compilador;
  */
 
 
+import compilador.sym;
+import compilador.sym;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,28 +25,52 @@ import java_cup.runtime.Symbol;
  *
  * @author 7053
  */
-import java.io.*;
-
 public class AnalizadorLexico1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+//         File archivo = new File("archivo.txt");
+//        PrintWriter escribir;
+       
         try {
-            Reader lector = new BufferedReader(new FileReader("src\\Compilador\\Type.txt"));
+            Reader lector = new BufferedReader(new FileReader("src\\Compilador\\Prueba.txt"));
             TypeScriptLexer lexer = new TypeScriptLexer(lector);
             String resultado = "";
             while (true) {
                 Symbol token = lexer.next_token();
-                System.out.println("Token: " + token.toString());
+                System.out.println("Token: "+token.toString());
                 if (token.sym == sym.EOF) {
                     resultado += "FIN";
                     System.out.println(resultado);
                     break;
                 }
             }
-            lector.close(); // Cerrar el lector después de usarlo
+         //   System.out.println("Resultado final nuevo "+lexer.getResultado());
         } catch (FileNotFoundException ex) {
-            System.err.println("Archivo no encontrado: " + ex.getMessage());
+            
         } catch (IOException ex) {
-            System.err.println("Error de lectura: " + ex.getMessage());
+            
         }
     }
 }
+//public class AnalizadorLexico1 {
+//    public static void main(String[] args) {
+//        try {
+//            Reader lector = new BufferedReader(new FileReader("src\\Compilador\\Type.txt"));
+//            TypeScriptLexer lexer = new TypeScriptLexer(lector);
+//            String resultado = "";
+//            while (true) {
+//                Symbol token = lexer.next_token();
+//                System.out.println("Token: " + token.toString());
+//                if (token.sym == sym.EOF) {
+//                    resultado += "FIN";
+//                    System.out.println(resultado);
+//                    break;
+//                }
+//            }
+//            lector.close(); // Cerrar el lector después de usarlo
+//        } catch (FileNotFoundException ex) {
+//            System.err.println("Archivo no encontrado: " + ex.getMessage());
+//        } catch (IOException ex) {
+//            System.err.println("Error de lectura: " + ex.getMessage());
+//        }
+//    }
+//}
