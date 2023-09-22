@@ -13,33 +13,26 @@ init with {: s.init(); :};
 scan with {: return s.next_token(); :};
 
 /* Terminales (tokens devueltos por el analizador léxico). */
-terminal INT, Dospunto, corchete_open, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
+terminal COMILLA_DOBLE, INT, Dospunto, corchete_open, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
 
 /* No terminales */
-non terminal Programa, DeclaraciónLista, Declaración, VariableDeclaración, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
+non terminal PALABRACLAVE, DeclaraciónLista, Declaración, VariableDeclaracion, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
 /* Definición de la gramática */
-start with Programa    ::= DeclaraciónLista ;
-DeclaraciónLista ::= Declaración ";" DeclaraciónLista
-                | Declaración ;
-Declaración ::= VariableDeclaración
-            | FunciónDeclaración
-            | Sentencia
-VariableDeclaración ::= "var" Variable ;
-FunciónDeclaración ::= "function" Identificador "(" ParámetroLista ")" Bloque ;
-ParámetroLista ::= Identificador "," ParámetroLista
-               | Identificador
-Bloque      ::= "{" SentenciaLista "}" ;
-SentenciaLista ::= Sentencia SentenciaLista
-               | Sentencia
-Sentencia   ::= Declaración
-            | Expresión
-            | "if" "(" Expresión ")" Sentencia
-            | "if" "(" Expresión ")" Sentencia "else" Sentencia
-            | "while" "(" Expresión ")" Sentencia ;
-Expresión   ::= Expresión "+" Expresión
-            | Expresión "-" Expresión
-            | Expresión "*" Expresión
-            | Expresión "/" Expresión
-            | Identificador
-            | Número
-            | "(" Expresión ")" ;
+
+//Cambios Jair
+/*
+start with VariableDeclaracion ;
+VariableDeclaracion::=PALABRACLAVE IDENTIFIER Dospunto INT EQ NUMBER puntoYcoma
+                    |PALABRACLAVE IDENTIFIER Dospunto STRING EQ STRING puntoYcoma
+                    |PALABRACLAVE IDENTIFIER Dospunto INT puntoYcoma
+                    |PALABRACLAVE IDENTIFIER Dospunto STRING puntoYcoma
+                    |IDENTIFIER Dospunto STRING puntoYcoma
+                    |IDENTIFIER Dospunto NUMBER puntoYcoma; 
+PALABRACLAVE::= CONST|LET|VAR;
+*/
+
+//Cambios Ulises
+
+VariableDeclaracion::=PALABRACLAVE IDENTIFIER Dospunto INT EQ NUMBER puntoYcoma|PALABRACLAVE IDENTIFIER Dospunto STRING EQ COMILLA_DOBLE STRING COMILLA_DOBLE puntoYcoma|PALABRACLAVE IDENTIFIER Dospunto INT puntoYcoma|PALABRACLAVE IDENTIFIER Dospunto STRING puntoYcoma|IDENTIFIER Dospunto STRING puntoYcoma|IDENTIFIER Dospunto NUMBER puntoYcoma| PALABRACLAVE IDENTIFIER EQ COMILLA_DOBLE STRING COMILLA_DOBLE puntoYcoma|PALABRACLAVE IDENTIFIER EQ NUMBER puntoYcoma; 
+PALABRACLAVE::= CONST|LET|VAR;
+

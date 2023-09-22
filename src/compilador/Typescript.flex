@@ -116,6 +116,8 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 <YYINITIAL> "{"                  {System.out.println("llave_open"+yytext()); return symbol(sym.llave_open); }
 <YYINITIAL> "}"                  {System.out.println("llave_close "+yytext()); return symbol(sym.llave_close); }
 <YYINITIAL> ","                  {System.out.println("coma "+yytext()); return symbol(sym.coma); }
+<YYINITIAL> "\""                  {System.out.println("COMILLA_DOBLE "+yytext()); return symbol(sym.COMILLA_DOBLE); }
+<YYINITIAL> "'"                  {System.out.println("COMILLA_SIMPLE "+yytext()); return symbol(sym.COMILLA_SIMPLE); }
 
 
 <YYINITIAL> {
