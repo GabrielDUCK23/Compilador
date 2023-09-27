@@ -1,4 +1,2 @@
-let esVerdadero: boolean = true;
-let edad = 30;
-let nombre = "Juan";
-
+var nom : string = "jejeje";
+var numero : number = 25;

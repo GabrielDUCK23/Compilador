@@ -44,7 +44,6 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 
 /* keywords */
 <YYINITIAL> "abstract"           {System.out.println("ABSTRACT "+yytext()); return symbol(sym.ABSTRACT); }
-<YYINITIAL> "boolean"            {System.out.println("BOOLEAN "+yytext()); return symbol(sym.BOOLEAN); }
 <YYINITIAL> "break"              {System.out.println("BREAK "+yytext()); return symbol(sym.BREAK); }
 <YYINITIAL> "if"                 {System.out.println("IF "+yytext()); return symbol(sym.IF); }
 <YYINITIAL> "import"             {System.out.println("IMPORT "+yytext()); return symbol(sym.IMPORT); }

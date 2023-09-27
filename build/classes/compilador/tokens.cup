@@ -23,7 +23,10 @@ non terminal Programa,PALABRACLAVE,VariableDeclaracion2,DATADECLARATION,Tipo,Dec
 
 start with Programa;
 
-Programa::= VariableDeclaracion|package_declaration;
+Programa::= 
+     VariableDeclaracion
+    |  VariableDeclaracion Programa
+    |  package_declaration;
 
 package_declaration::= PACKAGE package_name puntoYcoma;
 
@@ -38,7 +41,6 @@ VariableDeclaracion::=PALABRACLAVE IDENTIFIER Dospunto Tipo puntoYcoma
                      |PALABRACLAVE IDENTIFIER EQ INTEGER_LITERAL puntoYcoma;
 
 PALABRACLAVE::= CONST|LET|VAR;
-
 
 
 Tipo::=STRING|NUMBER|BOOLEAN;

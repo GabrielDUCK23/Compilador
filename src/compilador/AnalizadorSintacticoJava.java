@@ -33,6 +33,7 @@ public class AnalizadorSintacticoJava {
             ex.printStackTrace();
             try {
                 Symbol sym = s.debug_parse();
+                
                 System.out.println("Error de sintaxis. Linea: " + (sym.right + 1) +
                         " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
                 System.out.println(ex.getMessage());
