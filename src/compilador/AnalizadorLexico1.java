@@ -36,7 +36,7 @@ public class AnalizadorLexico1 {
             String resultado = "";
             while (true) {
                 Symbol token = lexer.next_token();
-                System.out.println("Token: "+token.toString());
+//                System.out.println("Token: "+token.toString());
                 if (token.sym == sym.EOF) {
                     resultado += "FIN";
                     System.out.println(resultado);

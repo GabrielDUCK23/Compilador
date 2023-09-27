@@ -24,10 +24,11 @@ public class Generador {
         
       
 
-        //String[] parametros = {"-parser", "Sintactico", "C:\\Users\\7053\\Documents\\NetBeansProjects\\UEDL_COMPILADORES\\src\\sintactico\\sintactico.cup"};
+//        String[] parametros2 = {"-parser", "Sintactico", "C:\\Users\\7053\\Documents\\NetBeansProjects\\UEDL_COMPILADORES\\src\\sintactico\\sintactico.cup"};
         String[] parametros = {"-destdir", "src\\compilador","-parser", "ParserJava", 
             "-progress", "src\\compilador\\tokens.cup"};
         java_cup.Main.main(parametros);
+//            java_cup.Main.main(parametros2);
         
     }
     

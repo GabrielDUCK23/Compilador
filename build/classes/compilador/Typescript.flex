@@ -32,7 +32,7 @@ Comment = {TraditionalComment} | {EndOfLineComment} | {DocumentationComment}
 TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
 EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
 DocumentationComment = "/**" {CommentContent} "*"+ "/"
-CommentContent = ( [^*] | \*+ [^/*] )*
+CommentContent = ( [^] | \*+ [^/*] )
 
 Identifier = [:jletter:] [:jletterdigit:]*
 
@@ -107,15 +107,16 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 <YYINITIAL> "of"                 {System.out.println("OF "+yytext()); return symbol(sym.OF); }
 <YYINITIAL> "("                  {System.out.println("PARENTHESIS_OPEN "+yytext()); return symbol(sym.PARENTHESIS_OPEN); }
 <YYINITIAL> ")"                  {System.out.println("PARENTHESIS_CLOSE "+yytext()); return symbol(sym.PARENTHESIS_CLOSE); }
-<YYINITIAL> ";"                  {System.out.println("puntoYcoma "+yytext()); return symbol(sym.puntoYcoma); }
+<YYINITIAL> ";"                  {System.out.println("puntoYcoma"+yytext()); return symbol(sym.puntoYcoma); }
 <YYINITIAL> "."                  {System.out.println("punto "+yytext()); return symbol(sym.punto); }
-<YYINITIAL> ":"                  {System.out.println("Dospunto "+yytext()); return symbol(sym.punto); }
-
+<YYINITIAL> ":"                  {System.out.println("Dospunto "+yytext()); return symbol(sym.Dospunto); }
 <YYINITIAL> "["                  {System.out.println("corchete_open"+yytext()); return symbol(sym.corchete_open); }
 <YYINITIAL> "]"                  {System.out.println("corchete_close "+yytext()); return symbol(sym.corchete_close); }
 <YYINITIAL> "{"                  {System.out.println("llave_open"+yytext()); return symbol(sym.llave_open); }
 <YYINITIAL> "}"                  {System.out.println("llave_close "+yytext()); return symbol(sym.llave_close); }
 <YYINITIAL> ","                  {System.out.println("coma "+yytext()); return symbol(sym.coma); }
+<YYINITIAL> "\""                  {System.out.println("COMILLA_DOBLE "+yytext()); return symbol(sym.COMILLA_DOBLE); }
+<YYINITIAL> "'"                  {System.out.println("COMILLA_SIMPLE "+yytext()); return symbol(sym.COMILLA_SIMPLE); }
 
 
 <YYINITIAL> {
@@ -155,7 +156,7 @@ System.out.println
 {Comment}                { System.out.println("Comment"+yytext());}
 
 /* whitespace */
-{WhiteSpace}             { System.out.println(" "+yytext());  }
+{WhiteSpace}             { }
 }
 
 <STRING> {
@@ -171,4 +172,4 @@ System.out.println
 \\                             { string.append('\\'); }
 }
 
-/* error fallback */
+/* error fallback */
