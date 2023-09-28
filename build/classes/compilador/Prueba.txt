@@ -1,4 +1,47 @@
-let esVerdadero: boolean = true;
-let edad = 30;
-let nombre = "Juan";
+//Ríos Sánchez Gabriel Ernesto
+//Sánchez González Héctor Ulises
+//Suárez Flores Jair Alfonso
 
+const otraVariable1: string = "Ríos Sánchez Gabriel Ernesto";
+const otraVariable11: string = "Sánchez González Héctor Ulises";
+const otraVariable111: string = "Suárez Flores Jair Alfonso";
+
+ miMetodo1() {
+  }
+
+
+  miMetodo2(param1: number, param2: string): string {
+  const otraVariable: string;
+    return Hello;
+  }
+
+miMetodo2(param1: number, param2: string): boolean {
+  let esVerdadero: boolean = true;
+  return true;
+}
+
+miMetodo2(param1: number, param2: string): boolean {
+  let esFalso: boolean = false;
+  return false;
+}
+
+
+function miFuncion1() {
+const otraVariable2: string = "jejeje";
+return RIO;
+}
+
+
+function miFuncion2(param1: number, param2: string): boolean {
+let falsoVerdad: boolean = false;
+  return true;
+}
+
+const otraVariable122: string = "Ríos Sánchez Gabriel Ernesto";
+const otraVariable1122: string = "Sánchez González Héctor Ulises";
+const otraVariable11221: string = "Suárez Flores Jair Alfonso";
+
+
+//Ríos Sánchez Gabriel Ernesto
+//Sánchez González Héctor Ulises
+//Suárez Flores Jair Alfonso

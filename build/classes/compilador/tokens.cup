@@ -1,5 +1,9 @@
 package compilador;
 
+//Suarez Florez Jair Alfonso   
+//Rios Sánchez Gabriel Ernesto
+//Sánchez González Héctor Ulises
+
 import java_cup.runtime.*;
 
 //parser code {:
@@ -13,32 +17,80 @@ import java_cup.runtime.*;
 //scan with {: return s.next_token(); :};
 
 /* Terminales (tokens devueltos por el analizador léxico). */
-terminal COMILLA_DOBLE, INT, Dospunto, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
+terminal COMILLA_DOBLE, INT, Dospuntos,CADENA, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
 
 
 /* No terminales */
-non terminal Programa,PALABRACLAVE,VariableDeclaracion2,DATADECLARATION,Tipo,DeclaraciónLista,Declaracion,expr,package_declaration,package_name,Declaración, VariableDeclaracion, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
+non terminal Funciones,Metodos,Programa,PALABRACLAVE,DATADECLARATION,Tipo,DeclaraciónLista,Declaracion,expr,package_declaration,package_name,Declaración, VariableDeclaracion, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
 /* Definición de la gramática */
 
 
 start with Programa;
 
-Programa::= VariableDeclaracion|package_declaration;
+Programa::= 
+            VariableDeclaracion
+            |VariableDeclaracion Programa
+            |package_declaration
+            |Metodos 
+            |Metodos Programa
+            |Funciones
+            |Funciones Programa;
 
+/////////////////////// Paquetes ////////////////////////////////
 package_declaration::= PACKAGE package_name puntoYcoma;
-
 package_name::= IDENTIFIER | IDENTIFIER punto package_name;
 
-VariableDeclaracion::=PALABRACLAVE IDENTIFIER Dospunto Tipo puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ INTEGER_LITERAL puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ COMILLA_DOBLE IDENTIFIER COMILLA_DOBLE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ TRUE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ FALSE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER EQ COMILLA_DOBLE IDENTIFIER COMILLA_DOBLE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER EQ INTEGER_LITERAL puntoYcoma;
+/////////////////////////Variables declaradas ////////////////////////////
 
-PALABRACLAVE::= CONST|LET|VAR;
+VariableDeclaracion::=Tipo IDENTIFIER Dospuntos Tipo puntoYcoma
+                     |Tipo IDENTIFIER Dospuntos Tipo EQ INTEGER_LITERAL puntoYcoma
+                     |Tipo IDENTIFIER Dospuntos Tipo EQ CADENA puntoYcoma
+                     |Tipo IDENTIFIER Dospuntos Tipo EQ TRUE puntoYcoma
+                     |Tipo IDENTIFIER Dospuntos Tipo EQ FALSE puntoYcoma
+                     |Tipo IDENTIFIER EQ CADENA puntoYcoma
+                     |Tipo IDENTIFIER EQ INTEGER_LITERAL puntoYcoma;
+
+Tipo::=STRING|NUMBER|BOOLEAN|CONST|LET|VAR;
+
+
+///////////////////////////// Metodos y Funciones ///////////////////////////////////////
+
+Metodos::= IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open llave_close
+         |IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open RETURN IDENTIFIER llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN IDENTIFIER puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN TRUE puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN FALSE puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN IDENTIFIER puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN TRUE puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN FALSE puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion RETURN IDENTIFIER puntoYcoma llave_close
+         |IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion puntoYcoma llave_close;
+
+
+Funciones::= FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion RETURN IDENTIFIER puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion RETURN TRUE puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open VariableDeclaracion RETURN FALSE puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN IDENTIFIER puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN TRUE puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open RETURN FALSE puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN IDENTIFIER puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN TRUE puntoYcoma llave_close
+            |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN FALSE puntoYcoma llave_close;
+           
 
 
 
-Tipo::=STRING|NUMBER|BOOLEAN;
+
+
+
+
+
+
+
+
