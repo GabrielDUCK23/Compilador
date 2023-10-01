@@ -17,11 +17,11 @@ import java_cup.runtime.*;
 //scan with {: return s.next_token(); :};
 
 /* Terminales (tokens devueltos por el analizador léxico). */
-terminal COMILLA_DOBLE, INT, Dospuntos,CADENA, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
+terminal COMILLA_DOBLE, INT, Dospuntos,CADENA, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIGUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
 
 
 /* No terminales */
-non terminal Funciones,Metodos,Programa,PALABRACLAVE,DATADECLARATION,Tipo,DeclaraciónLista,Declaracion,expr,package_declaration,package_name,Declaración, VariableDeclaracion, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
+non terminal Funciones,Condiciones,Funcion_IFELSE,Compuestos,Funcion_IF,Metodos,Programa,PALABRACLAVE,DATADECLARATION,Tipo,DeclaraciónLista,Declaracion,expr,package_declaration,package_name,Declaración, VariableDeclaracion, FunciónDeclaración, ParámetroLista, Bloque, SentenciaLista,Sentencia,Expresión;
 /* Definición de la gramática */
 
 
@@ -34,7 +34,11 @@ Programa::=
             |Metodos 
             |Metodos Programa
             |Funciones
-            |Funciones Programa;
+            |Funciones Programa
+            |Funcion_IF 
+            |Funcion_IF Programa
+            |Funcion_IFELSE
+            |Funcion_IFELSE Programa;
 
 /////////////////////// Paquetes ////////////////////////////////
 package_declaration::= PACKAGE package_name puntoYcoma;
@@ -83,6 +87,37 @@ Funciones::= FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open l
             |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN TRUE puntoYcoma llave_close
             |FUNCTION IDENTIFIER PARENTHESIS_OPEN IDENTIFIER Dospuntos Tipo coma IDENTIFIER Dospuntos Tipo PARENTHESIS_CLOSE Dospuntos Tipo llave_open VariableDeclaracion RETURN FALSE puntoYcoma llave_close;
            
+
+///////////////////////////////if else //////////////////////////////////////////////////////////////
+
+
+Condiciones::= MAYORIGUAL | MENORIGUAL | MAYORQUE | MENORQUE | COMPARAIGUAL | EQEQ;
+
+Compuestos::= AND | NOT | OR;
+
+
+Funcion_IF::= IF PARENTHESIS_OPEN IDENTIFIER Condiciones IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN Compuestos IDENTIFIER PARENTHESIS_CLOSE  llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN Compuestos IDENTIFIER Condiciones IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN Compuestos IDENTIFIER Compuestos IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN IDENTIFIER Condiciones IDENTIFIER Compuestos IDENTIFIER Condiciones IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN Compuestos IDENTIFIER Condiciones IDENTIFIER Compuestos IDENTIFIER Condiciones IDENTIFIER PARENTHESIS_CLOSE puntoYcoma llave_open Programa llave_close
+              |IF PARENTHESIS_OPEN IDENTIFIER Compuestos IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close;
+
+Funcion_IFELSE::= Funcion_IF ELSE llave_open Programa llave_close
+                 |Funcion_IF ELSE Funcion_IF
+                 |Funcion_IF ELSE Funcion_IF  ELSE llave_open Programa llave_close;
+
+
+          
+              
+              
+              
+              
+           
+
+
+
 
 
 

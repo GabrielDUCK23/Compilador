@@ -135,7 +135,7 @@ System.out.println
 "%="                           {System.out.println("PorcentajeIGUAL "+yytext()); return symbol(sym.PorcentajeIGUAL); }
 "++"                           {System.out.println("INCREMENTO "+yytext()); return symbol(sym.INCREMENTO); }
 "--"                           {System.out.println("DECREMENTO "+yytext()); return symbol(sym.DECREMENTO); }
-"!="                           {System.out.println("COMPARAIUAL "+yytext()); return symbol(sym.COMPARAIUAL); }
+"!="                           {System.out.println("COMPARAIGUAL "+yytext()); return symbol(sym.COMPARAIGUAL); }
 "<"                            {System.out.println("MAYORQUE "+yytext()); return symbol(sym.MAYORQUE); }
 ">"                            {System.out.println("MENORQUE "+yytext()); return symbol(sym.MENORQUE); }
 "<="                           {System.out.println("MENORIGUAL "+yytext()); return symbol(sym.MENORIGUAL); }

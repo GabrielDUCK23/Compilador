@@ -1249,7 +1249,7 @@ class TypeScriptLexer implements java_cup.runtime.Scanner {
             }
           case 148: break;
           case 42: 
-            { System.out.println("COMPARAIUAL "+yytext()); return symbol(sym.COMPARAIUAL);
+            { System.out.println("COMPARAIGUAL "+yytext()); return symbol(sym.COMPARAIGUAL);
             }
           case 149: break;
           case 43: 

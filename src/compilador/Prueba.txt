@@ -2,45 +2,26 @@
 //Sánchez González Héctor Ulises
 //Suárez Flores Jair Alfonso
 
-const otraVariable1: string = "Ríos Sánchez Gabriel Ernesto";
-const otraVariable11: string = "Sánchez González Héctor Ulises";
-const otraVariable111: string = "Suárez Flores Jair Alfonso";
 
- miMetodo1() {
-  }
-
-
-  miMetodo2(param1: number, param2: string): string {
-  const otraVariable: string;
-    return Hello;
-  }
-
-miMetodo2(param1: number, param2: string): boolean {
-  let esVerdadero: boolean = true;
-  return true;
+if (estaSoleado && tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+}else if(!TENGOhABRE || tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+}else { 
+const otraVariable111: string = "Ríos Sánchez Gabriel Ernesto";
 }
 
-miMetodo2(param1: number, param2: string): boolean {
-  let esFalso: boolean = false;
-  return false;
+if (!TENGOhABRE || tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+} 
+
+if (Pepe || Jose) {
+    const otraVariable111: string = "Pepe o Jose ";
+}else if(!TENGOhABRE && tengoSombrero) {
+    const otraVariable111: string = "Hola pepe";
+}else { 
+const otraVariable111: string = "Hola Jose";
 }
-
-
-function miFuncion1() {
-const otraVariable2: string = "jejeje";
-return RIO;
-}
-
-
-function miFuncion2(param1: number, param2: string): boolean {
-let falsoVerdad: boolean = false;
-  return true;
-}
-
-const otraVariable122: string = "Ríos Sánchez Gabriel Ernesto";
-const otraVariable1122: string = "Sánchez González Héctor Ulises";
-const otraVariable11221: string = "Suárez Flores Jair Alfonso";
-
 
 //Ríos Sánchez Gabriel Ernesto
 //Sánchez González Héctor Ulises
