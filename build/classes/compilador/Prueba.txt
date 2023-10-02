@@ -1,2 +1,54 @@
+<<<<<<< HEAD
 var nom : string = "jejeje";
 var numero : number = 25;
+=======
+//Ríos Sánchez Gabriel Ernesto
+//Sánchez González Héctor Ulises
+//Suárez Flores Jair Alfonso
+
+let opcion: number = 2; // Cambia el valor de 'opcion' según tus necesidades
+
+switch (opcion) {
+
+  case 1:
+    let opcion: number = 24;
+
+    break;
+
+  case 2:
+  let opcion: number = 984; 
+
+    break;
+  case 3:
+  function miFuncion() {
+  let opcion: number = 984;
+  }
+ break;
+
+default:
+let opcion: number = 667;
+}
+
+
+
+let color = "rojo";
+
+switch (color) {
+  case "rojo":
+    let nombre = "Es rojo";
+    break;
+  case "verde":
+    let nombre = "Es verde";
+    break;
+  default:
+    let nombre = "No se reconoce el color";
+}
+
+
+
+
+
+//Ríos Sánchez Gabriel Ernesto
+//Sánchez González Héctor Ulises
+//Suárez Flores Jair Alfonso
+>>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef

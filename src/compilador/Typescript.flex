@@ -108,7 +108,7 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 <YYINITIAL> ")"                  {System.out.println("PARENTHESIS_CLOSE "+yytext()); return symbol(sym.PARENTHESIS_CLOSE); }
 <YYINITIAL> ";"                  {System.out.println("puntoYcoma"+yytext()); return symbol(sym.puntoYcoma); }
 <YYINITIAL> "."                  {System.out.println("punto "+yytext()); return symbol(sym.punto); }
-<YYINITIAL> ":"                  {System.out.println("Dospunto "+yytext()); return symbol(sym.Dospunto); }
+<YYINITIAL> ":"                  {System.out.println("Dospuntos "+yytext()); return symbol(sym.Dospuntos); }
 <YYINITIAL> "["                  {System.out.println("corchete_open"+yytext()); return symbol(sym.corchete_open); }
 <YYINITIAL> "]"                  {System.out.println("corchete_close "+yytext()); return symbol(sym.corchete_close); }
 <YYINITIAL> "{"                  {System.out.println("llave_open"+yytext()); return symbol(sym.llave_open); }
@@ -135,7 +135,7 @@ System.out.println
 "%="                           {System.out.println("PorcentajeIGUAL "+yytext()); return symbol(sym.PorcentajeIGUAL); }
 "++"                           {System.out.println("INCREMENTO "+yytext()); return symbol(sym.INCREMENTO); }
 "--"                           {System.out.println("DECREMENTO "+yytext()); return symbol(sym.DECREMENTO); }
-"!="                           {System.out.println("COMPARAIUAL "+yytext()); return symbol(sym.COMPARAIUAL); }
+"!="                           {System.out.println("COMPARAIGUAL "+yytext()); return symbol(sym.COMPARAIGUAL); }
 "<"                            {System.out.println("MAYORQUE "+yytext()); return symbol(sym.MAYORQUE); }
 ">"                            {System.out.println("MENORQUE "+yytext()); return symbol(sym.MENORQUE); }
 "<="                           {System.out.println("MENORIGUAL "+yytext()); return symbol(sym.MENORIGUAL); }

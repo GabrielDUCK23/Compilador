@@ -1119,7 +1119,11 @@ class TypeScriptLexer implements java_cup.runtime.Scanner {
             }
           case 116: break;
           case 10: 
+<<<<<<< HEAD
             { System.out.println("Dospunto "+yytext()); return symbol(sym.Dospunto);
+=======
+            { System.out.println("Dospuntos "+yytext()); return symbol(sym.Dospuntos);
+>>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
             }
           case 117: break;
           case 11: 
@@ -1249,7 +1253,11 @@ class TypeScriptLexer implements java_cup.runtime.Scanner {
             }
           case 148: break;
           case 42: 
+<<<<<<< HEAD
             { System.out.println("COMPARAIUAL "+yytext()); return symbol(sym.COMPARAIUAL);
+=======
+            { System.out.println("COMPARAIGUAL "+yytext()); return symbol(sym.COMPARAIGUAL);
+>>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
             }
           case 149: break;
           case 43: 
