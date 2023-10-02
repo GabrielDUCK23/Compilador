@@ -157,7 +157,7 @@ System.out.println
 /* whitespace */
 {WhiteSpace}             { }
 }
-
+ \"[^\"]*\"  {System.out.println("CADENA "+yytext()); return symbol(sym.CADENA); }
 <STRING> {
 \"                             { yybegin(YYINITIAL); 
                                        return symbol(sym.STRING_LITERAL, 

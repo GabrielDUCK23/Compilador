@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/AnalizadorLexico1.java</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/tokens.cup</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/ParserJava.java</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/Typescript.flex</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/Generador.java</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/Main.java</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/Prueba.txt</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/sym.java</file>
-            <file>file:/C:/Users/netor/OneDrive/Escritorio/repositorio/Compilador/src/compilador/AnalizadorSintacticoJava.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/Typescript.flex</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/Main.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/TypeScriptLexer.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/sym.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/AnalizadorSintacticoJava.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/Generador.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Compilador/src/compilador/tokens.cup</file>
         </group>
     </open-files>
 </project-private>
