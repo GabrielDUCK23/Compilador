@@ -2,26 +2,47 @@
 //Sánchez González Héctor Ulises
 //Suárez Flores Jair Alfonso
 
+let opcion: number = 2; // Cambia el valor de 'opcion' según tus necesidades
 
-if (estaSoleado && tengoSombrero) {
-    const otraVariable111: string = "Suárez Flores Jair Alfonso";
-}else if(!TENGOhABRE || tengoSombrero) {
-    const otraVariable111: string = "Suárez Flores Jair Alfonso";
-}else { 
-const otraVariable111: string = "Ríos Sánchez Gabriel Ernesto";
+switch (opcion) {
+
+  case 1:
+    let opcion: number = 24;
+
+    break;
+
+  case 2:
+  let opcion: number = 984; 
+
+    break;
+  case 3:
+  function miFuncion() {
+  let opcion: number = 984;
+  }
+ break;
+
+default:
+let opcion: number = 667;
 }
 
-if (!TENGOhABRE || tengoSombrero) {
-    const otraVariable111: string = "Suárez Flores Jair Alfonso";
-} 
 
-if (Pepe || Jose) {
-    const otraVariable111: string = "Pepe o Jose ";
-}else if(!TENGOhABRE && tengoSombrero) {
-    const otraVariable111: string = "Hola pepe";
-}else { 
-const otraVariable111: string = "Hola Jose";
+
+let color = "rojo";
+
+switch (color) {
+  case "rojo":
+    let nombre = "Es rojo";
+    break;
+  case "verde":
+    let nombre = "Es verde";
+    break;
+  default:
+    let nombre = "No se reconoce el color";
 }
+
+
+
+
 
 //Ríos Sánchez Gabriel Ernesto
 //Sánchez González Héctor Ulises
