@@ -6,22 +6,28 @@ package compilador;
 
 import java_cup.runtime.*;
 
-//parser code {:
-    // Conectar este analizador sintáctico a un analizador léxico (scanner).
-   // scanner s;
-    //Parser(scanner s){ this.s=s; }
-//:}
+parser code
+{:
+/**
+* Método al que se llama automáticamente ante algún error sintactico.
+**/
+public void syntax_error(Symbol s){
+    System.out.println("Error Sintáctico en la Línea " + (s.left) + " Columna "+s.right+ ". No se esperaba este componente: " +s.value+".");
+}
 
-/* Definir cómo conectar con el analizador léxico. */
-//init with {: s.init(); :};
-//scan with {: return s.next_token(); :};
+/**
+* Método al que se llama automáticamente ante algún error sintáctico
+* en el que ya no es posible una recuperación de errores.
+**/
+public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
+System.out.println("Error síntactico irrecuperable en la Línea " + (s.left)+ " Columna "+s.right+". Componente " + s.value + " no reconocido.");
+}
+:} 
+
 
 /* Terminales (tokens devueltos por el analizador léxico). */
-<<<<<<< HEAD
-terminal COMILLA_DOBLE, INT, Dospunto, corchete_open,COMILLA_SIMPLE,CADENA, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
-=======
-terminal FOREACH,COMILLA_DOBLE, INT, Dospuntos,CADENA, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIGUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, DIVISION, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
->>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
+terminal String FOREACH,COMILLA_DOBLE, INT, Dospuntos,CADENA, corchete_open,COMILLA_SIMPLE, corchete_close, llave_open, llave_close, SUMA, punto, COMILLA, puntoYcoma, MASIGUAL, scanner, MENOSIGUAL, PARENTHESIS_OPEN, PARENTHESIS_CLOSE, PORIGUAL, DIVISIONIGUAL, REQUIRE, PorcentajeIGUAL, INCREMENTO, DECREMENTO, COMPARAIGUAL, MAYORQUE, MENORQUE, MENORIGUAL, MAYORIGUAL, AND, OR, NOT, EQEQ, EQ, PLUS, POR, 
+, PORCENTAJE, ABSTRACT, BOOLEAN, BREAK, IF, IMPORT, IN, INSTANCEOF, NEW, NULL, RETURN, SUPER, SWITCH, THIS, THROW, TRUE, TRY, TYPEOF, VAR, VOID, WHILE, WITCH, CASE, CATCH, CLASS, CONST, CONTINUE, DEBUGGER, DEFAULT, DELETE, DO, ELSE, ENUM, EXPORT, EXTENDS, FALSE, Comment, FINALLY, FOR, FUNCTION, AS, IMPLEMENTS, INTERFACE, LET, Menos, coma, PACKAGE, PRIVATE, PROTECTED, PUBLIC, STATIC, YIELD, ANY, CONSTRUCTOR, GET, MODULE, REQUIERE, IDENTIFIER, INTEGER_LITERAL, STRING_LITERAL, NUMBER, SET, STRING, SYMBOL, TYPE, FROM, OF, WITH, DECLARE, ERROR;
 
 
 /* No terminales */
@@ -32,11 +38,6 @@ non terminal Funcion_Default,CASES,Funcion_Case,Funcion_Switch,Funcion_IFELSE,Fu
 start with Programa;
 
 Programa::= 
-<<<<<<< HEAD
-     VariableDeclaracion
-    |  VariableDeclaracion Programa
-    |  package_declaration;
-=======
             VariableDeclaracion
             |VariableDeclaracion Programa
             |package_declaration
@@ -63,21 +64,10 @@ Programa::=
 
 
 /////////////////////// Paquetes ////////////////////////////////
->>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
 
 package_declaration::= PACKAGE package_name puntoYcoma;
 package_name::= IDENTIFIER | IDENTIFIER punto package_name;
 
-<<<<<<< HEAD
-VariableDeclaracion::=PALABRACLAVE IDENTIFIER Dospunto Tipo puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ INTEGER_LITERAL puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ CADENA puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ TRUE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER Dospunto Tipo EQ FALSE puntoYcoma
-                     |PALABRACLAVE IDENTIFIER EQ CADENA puntoYcoma
-                     |PALABRACLAVE IDENTIFIER EQ INTEGER_LITERAL puntoYcoma;
-=======
->>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
 
 ///////////////////////// API /////////////////////////////
 
@@ -103,18 +93,13 @@ VariableDeclaracion::=DECLARACION IDENTIFIER Dospuntos TIPO puntoYcoma
 PARAMS::= PARAM | PARAM coma PARAMS;
 PARAM::= IDENTIFIER Dospuntos TIPO;
 
-STATEMENTS::= VariableDeclaracion;
-
 METODOS::= IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open llave_close
           |IDENTIFIER PARENTHESIS_OPEN PARAMS PARENTHESIS_CLOSE Dospuntos TIPO llave_open Programa llave_close;
 
-FUNCIONES::= FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open STATEMENTS RETURN VALOR_LITERAL puntoYcoma llave_close
+FUNCIONES::= FUNCTION IDENTIFIER PARENTHESIS_OPEN PARENTHESIS_CLOSE llave_open Programa RETURN VALOR_LITERAL puntoYcoma llave_close
             |FUNCTION IDENTIFIER PARENTHESIS_OPEN PARAMS PARENTHESIS_CLOSE Dospuntos TIPO llave_open Programa RETURN VALOR_LITERAL puntoYcoma llave_close;
 
 
-<<<<<<< HEAD
-Tipo::=STRING|NUMBER|BOOLEAN;
-=======
 
 /////////////////////////////// IF-ELSE //////////////////////////////////////////////////////////////
 
@@ -152,15 +137,15 @@ Funcion_Default::= DEFAULT Dospuntos Programa;
 ///////////////////////////// CICLOS ///////////////////////////////////////
 
 CycleDeclaration::= FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER EQ INTEGER_LITERAL puntoYcoma IDENTIFIER OP_COMPARACION INTEGER_LITERAL puntoYcoma IDENTIFIER INCREMENTO PARENTHESIS_CLOSE llave_open llave_close
-                   |FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER EQ INTEGER_LITERAL puntoYcoma IDENTIFIER OP_COMPARACION INTEGER_LITERAL puntoYcoma IDENTIFIER INCREMENTO PARENTHESIS_CLOSE llave_open CycleDeclaration llave_close
+                   |FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER EQ INTEGER_LITERAL puntoYcoma IDENTIFIER OP_COMPARACION INTEGER_LITERAL puntoYcoma IDENTIFIER INCREMENTO PARENTHESIS_CLOSE llave_open Programa llave_close
                    |WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE llave_open llave_close
-                   |WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE llave_open CycleDeclaration llave_close
+                   |WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE llave_open Programa llave_close
                    |DO llave_open llave_close WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE puntoYcoma
-                   |DO llave_open CycleDeclaration llave_close WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE puntoYcoma
+                   |DO llave_open Programa llave_close WHILE PARENTHESIS_OPEN UseOfConditions PARENTHESIS_CLOSE puntoYcoma
                    |FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER ForTypes IDENTIFIER PARENTHESIS_CLOSE llave_open llave_close
-                   |FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER ForTypes IDENTIFIER PARENTHESIS_CLOSE llave_open CycleDeclaration llave_close
+                   |FOR PARENTHESIS_OPEN DECLARACION IDENTIFIER ForTypes IDENTIFIER PARENTHESIS_CLOSE llave_open Programa llave_close
                    |IDENTIFIER punto FOREACH PARENTHESIS_OPEN IDENTIFIER EQ MAYORQUE llave_open llave_close PARENTHESIS_CLOSE puntoYcoma
-                   |IDENTIFIER punto FOREACH PARENTHESIS_OPEN IDENTIFIER EQ MAYORQUE llave_open CycleDeclaration llave_close PARENTHESIS_CLOSE puntoYcoma;
+                   |IDENTIFIER punto FOREACH PARENTHESIS_OPEN IDENTIFIER EQ MAYORQUE llave_open Programa llave_close PARENTHESIS_CLOSE puntoYcoma;
 
 ForTypes::= OF|IN;
 
@@ -204,4 +189,6 @@ COMPARA_SIMPLE ::= VALOR_LITERAL OP_LOGICO VALOR_LITERAL
 EXP_ARITMETICA::= VALOR_LITERAL OP_UNARIO | OPERACION_SIMPLE | OPERACION_SIMPLE OPERADOR VALOR_LITERAL | OPERACION_SIMPLE OPERADOR EXP_ARITMETICA;
 
 OPERACION_SIMPLE::= VALOR_LITERAL OPERADOR VALOR_LITERAL;
->>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
+
+///////////////////////////////////////////////////////////////////// Prueba y error ////////////////////////////////////////////////////////////////////////
+

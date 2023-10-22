@@ -1,35 +1,65 @@
-<<<<<<< HEAD
-var nom : string = "jejeje";
-var numero : number = 25;
-=======
 //Ríos Sánchez Gabriel Ernesto
 //Sánchez González Héctor Ulises
 //Suárez Flores Jair Alfonso
 
-let opcion: number = 2; // Cambia el valor de 'opcion' según tus necesidades
+///////////////////////// VARIABLES /////////////////////////////
 
-switch (opcion) {
+const otraVariable1: string = "Ríos Sánchez Gabriel Ernesto";
+const otraVariable11: string = "Sánchez González Héctor Ulises";
+const otraVariable111: string = "Suárez Flores Jair Alfonso";
 
-  case 1:
-    let opcion: number = 24;
+///////////////////////// METODOS Y FUNCIONES /////////////////////////////
 
-    break;
+miMetodo1() {
+    
+}
 
-  case 2:
-  let opcion: number = 984; 
+miMetodo2(param1: number, param2: string, param3: boolean, param4: string): string {
+const otraVariable: string;
+}
 
-    break;
-  case 3:
-  function miFuncion() {
-  let opcion: number = 984;
-  }
- break;
+function miFuncion1() {
+    const otraVariable2: string = "jejeje";
+    function miFuncion2(param1: number, param2: string, param2: string): boolean {
+    let falsoVerdad: boolean = false;
+    return true;
+    }
+    return RIO;
+}
 
-default:
-let opcion: number = 667;
+function miFuncion2(param1: number, param2: string, param2: string): boolean {
+let falsoVerdad: boolean = false;
+return true;
+}
+
+/////////////////////////////// IF-ELSE //////////////////////////////////////////////////////////////
+
+
+if (!TENGOhABRE || tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+    if (!TENGOhABRE || tengoSombrero) {
+        const miVar: string = "Hello World!";
+    } 
+} 
+
+if (estaSoleado && tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+}else if(!TENGOhABRE || tengoSombrero) {
+    const otraVariable111: string = "Suárez Flores Jair Alfonso";
+}else { 
+const otraVariable111: string = "Ríos Sánchez Gabriel Ernesto";
+}
+
+if (Pepe || Jose) {
+    const otraVariable111: string = "Pepe o Jose ";
+}else if(!TENGOhABRE && tengoSombrero) {
+    const otraVariable111: string = "Hola pepe";
+}else { 
+const otraVariable111: string = "Hola Jose";
 }
 
 
+/////////////////////////////// SWITCH /////////////////////////////////////////////////////////////
 
 let color = "rojo";
 
@@ -45,10 +75,98 @@ switch (color) {
 }
 
 
+let opcion: number = 2; // Cambia el valor de 'opcion' según tus necesidades
+
+switch (opcion) {
+
+  case 1:
+    let opcion: number = 24;
+
+    break;
+
+  case 2:
+  let opcion: number = 984; 
+
+    break;
+  case 3:
+    function miFuncion() {
+    let opcion: number = 984;
+    return opcion;
+    }
+ break;
+case 4:
+  const lista = []; 
+
+  break;
+case 5:
+  while (i < 10) {
+  }
+
+  break;
+
+default:
+let opcion: number = 667;
+}
+
+
+///////////////////////////// CICLOS ///////////////////////////////////////
+
+while (i < 5) {
+    while (i < 10) {
+    }
+}
+
+do {
+   for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+        }
+   }
+} while (i < 5);
+
+
+for (const item of arr) {
+    for (const item of arr) {
+    }
+}
+
+for (const key in obj) {
+    for (const key in obj) {
+    }
+}
+
+arr.forEach(item => {
+    item.forEach(num => {
+    });
+});
+
+
+
+///////////////////////////// Arrays ///////////////////////////////////////
+
+let matriz2D = [[1, 2, 3], ["He", "llo", "World!"], [true, false, true]];
+const lista = [];
+let letras: string[];
+const booleanos = [true,false];
+const villians = ["Omega Rojo","Dormammu","Duende Verde"];
+const numbers: number[] = [1,2,3,4,5];
+
+///////////////////////////// EXPRESIONES LOGICAS ///////////////////////////////////////
+!true
+true && false
+8=="8"
+(true || false) && (false && false)
+(9>10) == (0>1)
+
+///////////////////////////// EXPRESIONES ARITMETICAS ///////////////////////////////////////
+
+8+9%6-4*2/2-0
+10++
+6--
+miVariable++
+miOtraVariable--
 
 
 
 //Ríos Sánchez Gabriel Ernesto
 //Sánchez González Héctor Ulises
 //Suárez Flores Jair Alfonso
->>>>>>> e9ec30c8893ee465e727e611200def04c5e479ef
